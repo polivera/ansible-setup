@@ -6,7 +6,6 @@
     state: directory
   tags:
   - ssh
-  - global
   - dotfiles
 
 # Adding git keys
@@ -17,7 +16,6 @@
     mode: 0600
   tags:
   - ssh
-  - global
   - dotfiles
 
 # Adding server keys
@@ -28,7 +26,6 @@
     mode: 0600
   tags:
   - ssh
-  - global
   - dotfiles
 
 # Adding server keys
@@ -39,7 +36,6 @@
     mode: 0600
   tags:
   - ssh
-  - global
   - dotfiles
 
 # Adding public key as authorized_key
@@ -49,5 +45,5 @@
     state: present
     key: "{{ lookup('file', dst_server_pub) }}"
   tags:
-  - dotfiles
   - ssh
+  - dotfiles

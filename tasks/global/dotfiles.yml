@@ -1,0 +1,24 @@
+# Create project directory
+- name: Creating projects directory
+  file:
+    path: "{{ personal_project_folder }}"
+    state: directory
+  tags:
+  - dotfiles
+
+# Checkout dotfiles
+- name: Checking out dotfiles
+  git:
+    repo: 'git@github.com:polivera/dotfiles.git'
+    dest: "{{ personal_project_folder }}/dotfiles"
+    accept_hostkey: yes
+    version: main
+  tags:
+  - dotfiles
+
+- name: Stow dotfiles for Fedora
+  shell: cd "{{ personal_project_folder }}/dotfiles" && ./fedora.sh
+  tags:
+  - dotfiles
+  when: ansible_distribution == "Fedora"
+

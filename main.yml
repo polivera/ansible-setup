@@ -1,12 +1,19 @@
-# Perform Global task regardles of the OS
+# Perform tasks/global task regardles of the OS
 - hosts: localhost
+  gather_facts: yes
   vars:
-    src_git_key: "./global/keys/id_rsa"
-    src_server_key: "./global/keys/id_rsa_servers"
-    src_server_pub: "./global/keys/id_rsa_servers.pub"
+    src_git_key: "./tasks/global/keys/id_rsa"
+    src_server_key: "./tasks/global/keys/id_rsa_servers"
+    src_server_pub: "./tasks/global/keys/id_rsa_servers.pub"
     dst_git_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
     dst_server_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers"
     dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers.pub"
+    personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
   tasks:
-    - import_tasks: ./global/ssh.yml
+    - import_tasks: ./tasks/global/ssh.yml
+    - import_tasks: ./tasks/global/dotfiles.yml
 
+# --------------------------------------------------------------------------
+# ansible_distribution
+#  - Archlinux
+#  - Fedora
