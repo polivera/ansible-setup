@@ -15,7 +15,6 @@
     - include_tasks: "./tasks/{{ ansible_distribution }}/init.yml"
     - include_tasks: "./tasks/{{ ansible_distribution }}/terminal.yml"
 
-
 # --------------------------------------------------------------------------
 # ansible_distribution
 #  - Archlinux
