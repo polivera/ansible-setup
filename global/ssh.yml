@@ -1,0 +1,53 @@
+# Create ssh directory
+- name: Creating SSH directory
+  file:
+    dest: "{{ dst_git_key | dirname }}"
+    mode: 0700
+    state: directory
+  tags:
+  - ssh
+  - global
+  - dotfiles
+
+# Adding git keys
+- name: Add git SSH key
+  copy:
+    src: "{{ src_git_key }}"
+    dest: "{{ dst_git_key }}"
+    mode: 0600
+  tags:
+  - ssh
+  - global
+  - dotfiles
+
+# Adding server keys
+- name: Add server SSH key
+  copy:
+    src: "{{ src_server_key }}"
+    dest: "{{ dst_server_key }}"
+    mode: 0600
+  tags:
+  - ssh
+  - global
+  - dotfiles
+
+# Adding server keys
+- name: Add server SSH Public key
+  copy:
+    src: "{{ src_server_pub }}"
+    dest: "{{ dst_server_pub }}"
+    mode: 0600
+  tags:
+  - ssh
+  - global
+  - dotfiles
+
+# Adding public key as authorized_key
+- name: Set authorized key took from file
+  authorized_key:
+    user: "{{ lookup('env', 'USER') }}"
+    state: present
+    key: "{{ lookup('file', dst_server_pub) }}"
+  tags:
+  - dotfiles
+  - ssh
