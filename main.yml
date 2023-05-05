@@ -14,6 +14,7 @@
     # - import_tasks: ./tasks/global/dotfiles.yml
     - include_tasks: "./tasks/{{ ansible_distribution }}/init.yml"
     - include_tasks: "./tasks/{{ ansible_distribution }}/terminal.yml"
+    - include_tasks: "./tasks/{{ ansible_distribution }}/development.yml"
 
 # --------------------------------------------------------------------------
 # ansible_distribution

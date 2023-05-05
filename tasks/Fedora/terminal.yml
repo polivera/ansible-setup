@@ -1,21 +1,36 @@
+# Install base console commands
 - main: Install zsh and dependencies
   become: true
   dnf:
-    - zsh
-    - util-linux-user
-    - bat
-    - lsd
-    - tmux
-    - xclip
-    - curl
-    - wget
+    name:
+      - zsh
+      - util-linux-user
+      - bat
+      - lsd
+      - tmux
+      - neovim
+      - xclip
+      - curl
+      - wget
+      - fzf
+      - ripgrep
+    state: latest
   tags:
   - terminal
   when: ansible_distribution == "Fedora"
 
+# Change the default shel
 - name: Change default shell
-  shell: chsh -s `which zsh`
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
   tags:
   - terminal
   when: ansible_distribution == "Fedora"
 
+# Install starship
+- name: Install starship shell
+  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y 
+  tags:
+  - terminal
+  when: ansible_distribution == "Fedora"
