@@ -33,3 +33,23 @@
   tags:
   - dotfiles
   when: ansible_distribution == "MacOSX"
+
+# Install Neovim
+- name: Setup neovim
+  git:
+    repo: 'git@github.com:polivera/nvim.git'
+    dest: "{{ personal_project_folder }}/neovim"
+    accept_hostkey: yes
+    version: main
+  tags:
+  - dotfiles
+  
+# Link to config
+- name: Link NeoVim config
+  file:
+    src: "{{ personal_project_folder }}/neovim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link
+  tags:
+  - dotfiles
+
