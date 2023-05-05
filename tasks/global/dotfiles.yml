@@ -29,7 +29,7 @@
   when: ansible_distribution == "Archlinux"
 
 - name: Stow dotfiles for MacOSX
-  shell: cd "{{ personal_project_folder }}/dotfiles" && ./arch.sh
+  shell: cd "{{ personal_project_folder }}/dotfiles" && ./macosx.sh
   tags:
   - dotfiles
   when: ansible_distribution == "MacOSX"
