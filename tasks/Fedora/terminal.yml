@@ -35,3 +35,9 @@
   - terminal
   when: ansible_distribution == "Fedora"
 
+# Install starship
+- name: Install starship shell
+  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y 
+  tags:
+  - terminal
+  when: ansible_distribution == "Fedora"
