@@ -1,0 +1,21 @@
+- main: Install zsh and dependencies
+  become: true
+  dnf:
+    - zsh
+    - util-linux-user
+    - bat
+    - lsd
+    - tmux
+    - xclip
+    - curl
+    - wget
+  tags:
+  - terminal
+  when: ansible_distribution == "Fedora"
+
+- name: Change default shell
+  shell: chsh -s `which zsh`
+  tags:
+  - terminal
+  when: ansible_distribution == "Fedora"
+
