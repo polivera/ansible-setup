@@ -1,11 +1,4 @@
-- name: Debugging something
-  debug: msg="This is the way"
-
-- name: Gnome Shortcuts
-  become_user: pablo
-  community.general.dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-down"
-    value: "'<Alt>9'"
+- name: Gnome Archlinux (btw)
+  debug: msg=gnome
   tags:
     - gnome
-    - untested

@@ -20,15 +20,18 @@
   when: ansible_distribution == "Fedora"
 
 # Change the default shel
+# TODO: Move this to global and the next one too
 - name: Change default shell
   user:
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh
   tags:
     - terminal
+  when: ansible_distribution == "Fedora"
 
 # Install starship
 - name: Install starship shell
   shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
   tags:
     - terminal
+  when: ansible_distribution == "Fedora"
