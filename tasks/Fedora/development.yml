@@ -10,14 +10,14 @@
       - libtree-sitter
     state: latest
   tags:
-  - development
+    - development
   when: ansible_distribution == "Fedora"
 
 # Install NodeJS
 - name: Install Node
   shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | NVM_DIR=$HOME/.config/nvm bash
   tags:
-  - development
+    - development
   when: ansible_distribution == "Fedora"
 
 # Install Go
@@ -28,20 +28,19 @@
       - golang
     state: latest
   tags:
-  - development
+    - development
   when: ansible_distribution == "Fedora"
 
 # Install Rust
 - name: Install Rust programming language
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
   tags:
-  - development
+    - development
   when: ansible_distribution == "Fedora"
-  
+
 # Install JVM
 - name: Install SDK Man
   shell: curl -s "https://get.sdkman.io" | SDKMAN_DIR=$HOME/.config/sdkman sh -s -- --help
   tags:
-  - development
+    - development
   when: ansible_distribution == "Fedora"
-

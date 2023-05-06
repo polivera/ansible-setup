@@ -1,0 +1,4 @@
+- name: Arch terminal placeholder
+  debug: msg="Terminal (btw)"
+  tags:
+    - untested

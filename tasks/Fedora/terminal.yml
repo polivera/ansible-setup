@@ -16,7 +16,7 @@
       - ripgrep
     state: latest
   tags:
-  - terminal
+    - terminal
   when: ansible_distribution == "Fedora"
 
 # Change the default shel
@@ -25,19 +25,10 @@
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh
   tags:
-  - terminal
-  when: ansible_distribution == "Fedora"
+    - terminal
 
 # Install starship
 - name: Install starship shell
-  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y 
+  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
   tags:
-  - terminal
-  when: ansible_distribution == "Fedora"
-
-# Install starship
-- name: Install starship shell
-  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y 
-  tags:
-  - terminal
-  when: ansible_distribution == "Fedora"
+    - terminal

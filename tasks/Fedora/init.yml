@@ -3,7 +3,7 @@
   become: true
   shell: echo 'max_parallel_downloads=10' >> /etc/dnf/dnf.conf
   tags:
-  - init
+    - init
   when: ansible_distribution == "Fedora"
 
 # Upgrade all packages
@@ -13,19 +13,18 @@
     name: "*"
     state: latest
   tags:
-  - init
+    - init
   when: ansible_distribution == "Fedora"
 
 # Enable rpmfusion free
 - name: Enable RPM Fusion Free
   become: true
   dnf:
-    name: 
+    name:
       - "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
       - "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
     state: present
     disable_gpg_check: yes
   tags:
-  - init
+    - init
   when: ansible_distribution == "Fedora"
-

@@ -1,2 +1,4 @@
-- name: Placeholder
+- name: Arch init placeholder
   debug: msg="WHAAAA (btw)"
+  tags:
+    - untested

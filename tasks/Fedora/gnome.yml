@@ -1,0 +1,7 @@
+- name: Gnome Shortcuts
+  dconf:
+    key: "org/gnome/desktop/wm/keybindings" 
+    value: "[('switch-to-workspace-5', '<Super>-')]"
+    state: present
+  tags:
+  - gnome

@@ -4,46 +4,55 @@
     path: "{{ personal_project_folder }}"
     state: directory
   tags:
-  - dotfiles
+    - dotfiles
 
 # Checkout dotfiles
 - name: Checking out dotfiles
   git:
-    repo: 'git@github.com:polivera/dotfiles.git'
+    repo: "git@github.com:polivera/dotfiles.git"
     dest: "{{ personal_project_folder }}/dotfiles"
     accept_hostkey: yes
     version: main
   tags:
-  - dotfiles
+    - dotfiles
 
 - name: Stow dotfiles for Fedora
   shell: cd "{{ personal_project_folder }}/dotfiles" && ./fedora.sh
   tags:
-  - dotfiles
+    - dotfiles
   when: ansible_distribution == "Fedora"
 
 - name: Stow dotfiles for Archlinux
   shell: cd "{{ personal_project_folder }}/dotfiles" && ./arch.sh
   tags:
-  - dotfiles
+    - dotfiles
   when: ansible_distribution == "Archlinux"
 
 - name: Stow dotfiles for MacOSX
   shell: cd "{{ personal_project_folder }}/dotfiles" && ./macosx.sh
   tags:
-  - dotfiles
+    - dotfiles
   when: ansible_distribution == "MacOSX"
+
+# Installing tmux tpm
+- name: Installing tmux tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ lookup('env', 'HOME') }}/.config/tmux/plugins/tpm"
+    version: master
+  tags:
+    - terminal
 
 # Install Neovim
 - name: Setup neovim
   git:
-    repo: 'git@github.com:polivera/nvim.git'
+    repo: "git@github.com:polivera/nvim.git"
     dest: "{{ personal_project_folder }}/neovim"
     accept_hostkey: yes
     version: main
   tags:
-  - dotfiles
-  
+    - dotfiles
+
 # Link to config
 - name: Link NeoVim config
   file:
@@ -51,5 +60,4 @@
     dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
     state: link
   tags:
-  - dotfiles
-
+    - dotfiles
