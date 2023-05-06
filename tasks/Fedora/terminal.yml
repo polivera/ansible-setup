@@ -1,5 +1,5 @@
 # Install base console commands
-- main: Install zsh and dependencies
+- name: Install zsh and dependencies
   become: true
   dnf:
     name:
@@ -22,6 +22,7 @@
 # Change the default shel
 # TODO: Move this to global and the next one too
 - name: Change default shell
+  become: true
   user:
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh

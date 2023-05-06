@@ -1,0 +1,25 @@
+# Install NodeJS
+- name: Create nvm folder
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvm"
+    state: directory
+  tags:
+    - development
+- name: Install Node Version Manager
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | NVM_DIR=$HOME/.config/nvm bash
+  tags:
+    - development
+- name: Install Node
+  shell: "{{ lookup('env', 'HOME') }}/.config/nvm/nvm.sh && nvm install node"
+  
+# Install Rust
+- name: Install Rust programming language
+  shell: curl https://sh.rustup.rs -sSf | RUSTUP_HOME=$HOME/.config/rustup CARGO_HOME=$HOME/.config/cargo sh -s -- -y --no-modify-path
+  tags:
+    - development
+
+# Install JVM
+- name: Install SDK Man
+  shell: curl -s "https://get.sdkman.io" | SDKMAN_DIR=$HOME/.config/sdkman sh -s -- --help
+  tags:
+    - development

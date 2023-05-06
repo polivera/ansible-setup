@@ -1,0 +1,44 @@
+# Partition Hard Drive
+- name: Read device information (always use unit when probing)
+  become: true
+  community.general.parted: device=/dev/nvme0n1 unit=MiB
+  register: disk_info
+  tags:
+    - bare-install
+    - untested
+
+- name: Remove all partitions from disk
+  community.general.parted:
+    device: /dev/nvme0n1
+    number: '{{ item.num }}'
+    state: absent
+  loop: '{{ disk_info.partitions }}'
+  tags:
+    - bare-install
+
+- name: Create a new efi partition
+  community.general.parted:
+    device: /dev/nvme0n1
+    number: 1
+    state: present
+    fs_type: efi
+  tags:
+    - bare-install
+
+- name: Create a new ext4 partition for root
+  community.general.parted:
+    device: /dev/nvme0n1
+    number: 2
+    state: present
+    fs_type: ext4
+  tags:
+    - bare-install
+
+- name: Create a new ext4 partition for home
+  community.general.parted:
+    device: /dev/nvme0n1
+    number: 3
+    state: present
+    fs_type: ext4
+  tags:
+    - bare-install
