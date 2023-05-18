@@ -1,4 +1,5 @@
 - name: Gnome Archlinux (btw)
-  debug: msg=gnome
-  tags:
-    - gnome
+  become: true
+  community.general.pacman:
+    name:
+    - libreoffice-fresh

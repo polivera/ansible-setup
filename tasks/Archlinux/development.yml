@@ -1,4 +1,10 @@
-- name: Arch development placeholder
-  debug: msg="Development (btw)"
-  tags:
-    - untested
+- name: Install dependencies
+  become: true
+  community.general.pacman:
+    name:
+    - fzf
+    - ripgrep
+    - hunspell    # Gospel dependency
+    - github-cli  # For neovim octo plugin
+  state: present
+  extra_args: --needed
