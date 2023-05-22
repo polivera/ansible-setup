@@ -1,0 +1,14 @@
+# Change the default shel
+- name: Change default shell
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+  tags:
+    - terminal
+
+# Install starship
+- name: Install starship shell
+  ansible.builtin.shell: set -o pipefail && curl -sS https://starship.rs/install.sh | sh -s -- -y
+  tags:
+    - terminal

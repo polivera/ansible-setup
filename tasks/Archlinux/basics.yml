@@ -1,0 +1,37 @@
+- name: Install basics
+  become: true
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+    name:
+      - stow
+      - archlinux-keyring
+      - udiskie
+      - udisks2
+      - usbutils
+      - pacman-contrib
+    state: present
+
+- name: Checkout yay project
+  ansible.builtin.git:
+    repo: "https://aur.archlinux.org/yay.git"
+    dest: "{{ home_folder }}/yay"
+
+- name: Make the package
+  ansible.builtin.command: makepkg -si --noconfirm
+  args:
+    chdir: "{{ home_folder }}/yay"
+
+- name: Remove yay folder
+  ansible.builtin.file:
+    state: absent
+    path: "{{ home_folder }}/yay"
+
+- name: Install firmware drivers
+  community.general.pacman:
+    name:
+      - aic94xx-firmware
+      - wd719x-firmware
+    state: present
+    executable: yay
+    extra_args: --builddir /var/cache/yay

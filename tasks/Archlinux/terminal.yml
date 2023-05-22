@@ -1,4 +1,25 @@
-- name: Arch terminal placeholder
-  debug: msg="Terminal (btw)"
+# Install base console commands
+- name: Install zsh and dependencies
+  become: true
+  community.general.pacman:
+    name:
+      - zsh
+      - bat
+      - exa
+      - tree
+      - tmux
+      - neovim
+      - xclip
+      - curl
+      - wget
+      - fzf
+      - ripgrep
+      - xclip
+      - curl
+      - wget
+    state: present
   tags:
-    - untested
+    - terminal
+
+- name: Importing global terminal task
+  ansible.builtin.import_tasks: ../Global/terminal.yml

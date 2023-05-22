@@ -44,7 +44,7 @@
     - terminal
 
 # Install Neovim
-- name: Setup neovim
+- name: Checkout neovim config
   git:
     repo: "git@github.com:polivera/nvim.git"
     dest: "{{ personal_project_folder }}/neovim"
@@ -54,7 +54,7 @@
     - dotfiles
 
 # Link to config
-- name: Link NeoVim config
+- name: Link neovim config
   file:
     src: "{{ personal_project_folder }}/neovim"
     dest: "{{ lookup('env', 'HOME') }}/.config/nvim"

@@ -1,7 +1,8 @@
-# Perform tasks/global task regardles of the OS
-- hosts: localhost
-  gather_facts: yes
+- name: Automated environment installation
+  hosts: localhost
+  gather_facts: true
   vars:
+    home_folder: "{{ lookup('env', 'HOME') }}"
     src_git_key: "./tasks/global/keys/id_rsa"
     src_server_key: "./tasks/global/keys/id_rsa_servers"
     src_server_pub: "./tasks/global/keys/id_rsa_servers.pub"
@@ -10,45 +11,48 @@
     dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers.pub"
     personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
   tasks:
-    - import_tasks: ./tasks/global/ssh.yml
-    - import_tasks: ./tasks/global/dotfiles.yml
-    # Installs
-      # This is used to install archlinux
-    # - name: Install OS
-    #   include_tasks: "./tasks/{{ ansible_distribution }}/install.yml"
-    #   tags: ['untested', 'bare-install']
-    # Inits
-    - name: Including init tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/init.yml"
-      tags: ['untested', 'init']
-    # Terminals
-    - name: Including terminal tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/terminal.yml"
-      tags: ['untested', 'terminal']
-    # Development
-    - name: Including development tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/development.yml"
-      tags: ['untested', 'development']
-    - import_tasks: ./tasks/global/development.yml
-    # Gnome
-    - name: Including Gnome tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/gnome.yml"
-      tags: ['untested', 'gnome']
-      tags: ['untested', 'init', 'fedora', 'arch','macosx']
-    # Terminals
-    - name: Including terminal tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/terminal.yml"
-      tags: ['untested', 'terminal', 'fedora', 'arch','macosx']
-    # Development
-    - name: Including development tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/development.yml"
-      tags: ['untested', 'development', 'fedora', 'arch','macosx']
-    # Gnome
-    - name: Import Global gnome tasks 
-      import_tasks: ./tasks/global/gnome.yml
-    - name: Including Gnome tasks for {{ ansible_distribution }}
-      include_tasks: "./tasks/{{ ansible_distribution }}/gnome.yml"
-      tags: ['untested', 'gnome', 'fedora', 'arch','macosx']
+    - name: Starting installer
+      ansible.builtin.include_tasks: "./tasks/{{ ansible_distribution }}/init.yml"
+
+    # - import_tasks: ./tasks/global/ssh.yml
+    # - import_tasks: ./tasks/global/dotfiles.yml
+    # # Installs
+    #   # This is used to install archlinux
+    # # - name: Install OS
+    # #   include_tasks: "./tasks/{{ ansible_distribution }}/install.yml"
+    # #   tags: ['untested', 'bare-install']
+    # # Inits
+    # - name: Including init tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/init.yml"
+    #   tags: ['untested', 'init']
+    # # Terminals
+    # - name: Including terminal tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/terminal.yml"
+    #   tags: ['untested', 'terminal']
+    # # Development
+    # - name: Including development tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/development.yml"
+    #   tags: ['untested', 'development']
+    # - import_tasks: ./tasks/global/development.yml
+    # # Gnome
+    # - name: Including Gnome tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/gnome.yml"
+    #   tags: ['untested', 'gnome']
+    #   tags: ['untested', 'init', 'fedora', 'arch','macosx']
+    # # Terminals
+    # - name: Including terminal tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/terminal.yml"
+    #   tags: ['untested', 'terminal', 'fedora', 'arch','macosx']
+    # # Development
+    # - name: Including development tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/development.yml"
+    #   tags: ['untested', 'development', 'fedora', 'arch','macosx']
+    # # Gnome
+    # - name: Import Global gnome tasks 
+    #   import_tasks: ./tasks/global/gnome.yml
+    # - name: Including Gnome tasks for {{ ansible_distribution }}
+    #   include_tasks: "./tasks/{{ ansible_distribution }}/gnome.yml"
+    #   tags: ['untested', 'gnome', 'fedora', 'arch','macosx']
 # --------------------------------------------------------------------------
 # ansible_distribution
 #  - Archlinux

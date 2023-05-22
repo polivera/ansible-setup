@@ -1,4 +1,31 @@
-- name: Arch init placeholder
-  debug: msg="WHAAAA (btw)"
-  tags:
-    - untested
+- name: Running Archlinux installation script
+  block:
+    # Import ssh keys
+    - name: Running ssh tasks
+      ansible.builtin.import_tasks: ../Global/ssh.yml
+
+    # Install basics
+    - name: Install basics
+      ansible.builtin.include_tasks: "./basics.yml"
+
+    # Install dotfiles
+    - name: Installing dotfiles
+      ansible.builtin.import_tasks: ../Global/dotfiles.yml
+
+    # Install terminal stuff
+    - name: Install terminal stuff
+      ansible.builtin.include_tasks: "./terminal.yml"
+
+    # Install terminal stuff
+    - name: Install development stuff
+      ansible.builtin.include_tasks: "./development.yml"
+
+
+
+      #
+      #ssh
+      #basics
+      #dotfiles
+      #terminal
+      #development
+      #gnome

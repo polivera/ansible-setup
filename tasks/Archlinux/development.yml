@@ -2,9 +2,15 @@
   become: true
   community.general.pacman:
     name:
-    - fzf
-    - ripgrep
-    - hunspell    # Gospel dependency
-    - github-cli  # For neovim octo plugin
-  state: present
-  extra_args: --needed
+      - base-devel
+      - fzf
+      - ripgrep
+      - hunspell    # Gospel dependency
+      - github-cli  # For neovim octo plugin
+      - go
+      - delve       # Golang Debugger
+    state: present
+    extra_args: --needed
+
+- name: Installing global tools
+  ansible.builtin.import_tasks: ../Global/development.yml
