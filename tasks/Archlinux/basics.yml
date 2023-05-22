@@ -11,23 +11,32 @@
       - usbutils
       - pacman-contrib
     state: present
+  tags:
+    - basics
 
 - name: Checkout yay project
   ansible.builtin.git:
     repo: "https://aur.archlinux.org/yay.git"
     dest: "{{ home_folder }}/yay"
+  tags:
+    - basics
 
 - name: Make the package
   ansible.builtin.command: makepkg -si --noconfirm
   args:
     chdir: "{{ home_folder }}/yay"
+  tags:
+    - basics
 
 - name: Remove yay folder
   ansible.builtin.file:
     state: absent
     path: "{{ home_folder }}/yay"
+  tags:
+    - basics
 
 - name: Install firmware drivers
+  become: true
   community.general.pacman:
     name:
       - aic94xx-firmware
@@ -35,3 +44,5 @@
     state: present
     executable: yay
     extra_args: --builddir /var/cache/yay
+  tags:
+    - basics

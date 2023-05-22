@@ -20,12 +20,6 @@
     - name: Install development stuff
       ansible.builtin.include_tasks: "./development.yml"
 
-
-
-      #
-      #ssh
-      #basics
-      #dotfiles
-      #terminal
-      #development
-      #gnome
+    # Install terminal stuff
+    - name: Install desktop environment stuff
+      ansible.builtin.include_tasks: "./gnome.yml"

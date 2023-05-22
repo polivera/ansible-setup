@@ -1,5 +1,7 @@
-- name: Gnome Global (Change Shortcuts)
-  shell: |
+- name: Gnome global configuration
+  ansible.builtin.shell: |
+    gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
+
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "[\"<Alt>1\"]"
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "[\"<Alt>2\"]"
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "[\"<Alt>3\"]"
@@ -21,5 +23,9 @@
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "[\"<Shift><Alt>8\"]"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "[\"<Shift><Alt>9\"]"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "[\"<Shift><Alt>0\"]"
+
+    gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
+
+    gsettings set org.gnome.desktop.interface enable-animations false
   tags:
     - gnome

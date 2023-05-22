@@ -5,7 +5,6 @@
   register: disk_info
   tags:
     - bare-install
-    - untested
 
 - name: Remove all partitions from disk
   community.general.parted:

@@ -2,4 +2,54 @@
   become: true
   community.general.pacman:
     name:
-    - libreoffice-fresh
+      - gnome
+      - gnome-extra
+      - gnome-themes-extra
+      - gnome-tweaks
+      - pipewire-jack
+      - lib32-pipewire-jack
+      - xdg-utils
+      - gst-libav
+      - gst-plugins-bad
+      - gst-plugins-base
+      - gst-plugins-good
+      - gst-plugins-ugly
+      - gst-plugin-pipewire
+      - eog
+      - firefox
+      - kitty
+      - kvantum-qt5
+      - libreoffice-fresh
+      - fragments
+    state: present
+  tags:
+    - gnome
+
+# Install software from aur
+- name: Install firmware drivers
+  become: true
+  community.general.pacman:
+    name:
+      - 1password
+      - spotify
+      - google-chrome
+      - gnome-browser-connector
+    state: present
+    executable: yay
+    extra_args: --builddir /var/cache/yay
+  tags:
+    - gnome
+
+# Enable GDM
+- name: Enable GDM
+  ansible.builtin.systemd:
+    name: gdm
+    enabled: true
+  tags:
+    - gnome
+
+# Include gnome global configuration
+- name: Include global Gnome config
+  ansible.builtin.include_tasks: ../Global/gnome.yml
+  tags:
+    - gnome
