@@ -4,12 +4,20 @@
     update_cache: true
     upgrade: true
     name:
-      - stow
+      - base
+      - base-devel
       - archlinux-keyring
       - udiskie
       - udisks2
       - usbutils
       - pacman-contrib
+      - pipewire
+      - pipewire-pulse
+      - bluez
+      - bluez-utils
+      - openssh
+      - stow
+      - ntfs-3g
     state: present
   tags:
     - basics

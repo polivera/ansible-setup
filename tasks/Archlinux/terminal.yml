@@ -17,6 +17,7 @@
       - xclip
       - curl
       - wget
+      - zip
     state: present
   tags:
     - terminal
