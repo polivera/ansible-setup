@@ -3,16 +3,26 @@
   gather_facts: true
   vars:
     home_folder: "{{ lookup('env', 'HOME') }}"
-    src_git_key: "./tasks/global/keys/id_rsa"
-    src_server_key: "./tasks/global/keys/id_rsa_servers"
-    src_server_pub: "./tasks/global/keys/id_rsa_servers.pub"
+    src_git_key: "./tasks/Global/keys/id_rsa"
+    src_server_key: "./tasks/Global/keys/id_rsa_servers"
+    src_server_pub: "./tasks/Global/keys/id_rsa_servers.pub"
     dst_git_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
     dst_server_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers"
     dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers.pub"
     personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
   tasks:
-    - name: Starting installer
-      ansible.builtin.include_tasks: "./tasks/{{ ansible_distribution }}/init.yml"
+    # Archlinux
+    - name: Starting Archlinux installer
+      ansible.builtin.import_tasks: "./tasks/Archlinux/init.yml"
+      when: ansible_distribution == "Archlinux"
+    # Fedora
+    - name: Starting Fedora installer
+      ansible.builtin.import_tasks: "./tasks/Fedora/init.yml"
+      when: ansible_distribution == "Fedora"
+    # MacOSX
+    - name: Starting MacOSX installer
+      ansible.builtin.import_tasks: "./tasks/MacOSX/init.yml"
+      when: ansible_distribution == "MacOSX"
 # --------------------------------------------------------------------------
 # ansible_distribution
 #  - Archlinux

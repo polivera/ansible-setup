@@ -6,7 +6,10 @@
 
     # Install basics
     - name: Install basics
-      ansible.builtin.include_tasks: "./basics.yml"
+      ansible.builtin.import_tasks: ./basics.yml
+
+    - name: Install drivers
+      ansible.builtin.import_tasks: ./drivers.yml
 
     # Install dotfiles
     - name: Installing dotfiles
@@ -14,12 +17,12 @@
 
     # Install terminal stuff
     - name: Install terminal stuff
-      ansible.builtin.include_tasks: "./terminal.yml"
+      ansible.builtin.import_tasks: ./terminal.yml
 
     # Install terminal stuff
     - name: Install development stuff
-      ansible.builtin.include_tasks: "./development.yml"
+      ansible.builtin.import_tasks: ./development.yml
 
     # Install terminal stuff
     - name: Install desktop environment stuff
-      ansible.builtin.include_tasks: "./gnome.yml"
+      ansible.builtin.import_tasks: ./gnome.yml

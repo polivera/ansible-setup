@@ -36,11 +36,11 @@ mkinitcpio -P
 
 # user config
 echo "*** Setting root Password ***"
-echo 'Test123' | passwd --stdin
+echo -e "Test123\nTest123" | passwd
 
 echo "*** Setting ${USER_NAME} Password ***"
 useradd -m $USER_NAME -G wheel
-echo 'Test123' | passwd $USER_NAME --stdin
+echo -e "Test123\nTest123" | passwd $USER_NAME
 
 # Change home owner
 chown $USER_NAME:$USER_NAME /home/$USER_NAME -R
@@ -59,13 +59,14 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Enable NM
 systemctl enable NetworkManager
 systemctl enable bluetooth
+systemctl enable avahi-daemon
 
 # Edit pacman.conf
 cp /etc/pacman.conf /etc/pacman.conf.back
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' /etc/pacman.conf
-echo -i '[multilib]' >>/etc/pacman.conf
-echo -i 'Include = /etc/pacman.d/mirrorlist' >>/etc/pacman.conf
+echo '[multilib]' >>/etc/pacman.conf
+echo 'Include = /etc/pacman.d/mirrorlist' >>/etc/pacman.conf
 
 # Warning message
 echo "[IMPORTANT!!!] - CHANGE ROOT AND $USER_NAME PASSWORD!!!!!"

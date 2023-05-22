@@ -25,23 +25,20 @@
   tags:
     - gnome
 
+
 # Install software from aur
-- name: Install firmware drivers
-  become: true
-  community.general.pacman:
-    name:
-      - 1password
-      - spotify
-      - google-chrome
-      - gnome-browser-connector
-    state: present
-    executable: yay
-    extra_args: --builddir /var/cache/yay
+- name: Install desktop apps from aur
+  become: false
+  ansible.builtin.shell: |
+    yay -S \
+    1password spotify google-chrome gnome-browser-connector \
+    --needed --noconfirm
   tags:
     - gnome
 
 # Enable GDM
 - name: Enable GDM
+  become: true
   ansible.builtin.systemd:
     name: gdm
     enabled: true
@@ -50,6 +47,6 @@
 
 # Include gnome global configuration
 - name: Include global Gnome config
-  ansible.builtin.include_tasks: ../Global/gnome.yml
+  ansible.builtin.import_tasks: ../Global/gnome.yml
   tags:
     - gnome

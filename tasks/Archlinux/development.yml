@@ -9,6 +9,10 @@
       - github-cli  # For neovim octo plugin
       - go
       - delve       # Golang Debugger
+      - php
+      - composer
+      - nodejs
+      - npm
     state: present
     extra_args: --needed
 

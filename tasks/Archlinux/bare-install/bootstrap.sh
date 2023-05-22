@@ -47,8 +47,9 @@ echo "*** Installing base system ***"
 pacstrap /mnt \
     base \
     linux-zen linux-firmware linux-headers dkms $UCODE_TYPE \
-    sudo networkmanager grub efibootmgr \
-    git ansible 
+    grub efibootmgr \
+    networkmanager bluez bluez-utils \
+    sudo git ansible neovim 
 
 unset $UCODE_TYPE
 

@@ -1,7 +1,7 @@
 # Install NodeJS
 - name: Create nvm folder
   ansible.builtin.file:
-    dest: "{{ home_folder }}/.config/nvm"
+    dest: "{{ home_folder }}/.config"
     state: directory
   tags:
     - development
@@ -12,7 +12,7 @@
     - development
 
 - name: Install Node
-  ansible.builtin.shell: "{{ home_folder }}/.config/nvm/nvm.sh && nvm install node"
+  ansible.builtin.shell: "source {{ home_folder }}/.config/nvm/nvm.sh && nvm install node"
   tags:
     - development
 
