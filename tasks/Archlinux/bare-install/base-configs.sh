@@ -36,11 +36,11 @@ mkinitcpio -P
 
 # user config
 echo "*** Setting root Password ***"
-echo 'Test.123' | passwd --stdin
+echo 'Test123' | passwd --stdin
 
 echo "*** Setting ${USER_NAME} Password ***"
 useradd -m $USER_NAME -G wheel
-echo 'Test.123' | passwd $USER_NAME --stdin
+echo 'Test123' | passwd $USER_NAME --stdin
 
 # Change home owner
 chown $USER_NAME:$USER_NAME /home/$USER_NAME -R
@@ -62,10 +62,10 @@ systemctl enable bluetooth
 
 # Edit pacman.conf
 cp /etc/pacman.conf /etc/pacman.conf.back
-sed 's/#Color/Color/g' /etc/pacman.conf
-sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' /etc/pacman.conf
-echo '[multilib]' >>/etc/pacman.conf
-echo 'Include = /etc/pacman.d/mirrorlist' >>/etc/pacman.conf
+sed -i 's/#Color/Color/g' /etc/pacman.conf
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' /etc/pacman.conf
+echo -i '[multilib]' >>/etc/pacman.conf
+echo -i 'Include = /etc/pacman.d/mirrorlist' >>/etc/pacman.conf
 
 # Warning message
 echo "[IMPORTANT!!!] - CHANGE ROOT AND $USER_NAME PASSWORD!!!!!"
