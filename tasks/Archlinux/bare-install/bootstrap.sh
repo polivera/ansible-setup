@@ -5,6 +5,9 @@ UCODE_TYPE=amd-ucode
 SWAP_PATH=/mnt/home/system
 SWAP_SIZE=16384        # In mb
 DISK_DEVICE=/dev/nvme0n1
+BOOT_PARTITION="${DISK_DEVICE}p1"
+ROOT_PARTITION="${DISK_DEVICE}p2"
+HOME_PARTITION="${DISK_DEVICE}p3"
 MAKE_PARTITIONS=0
 
 if [[ $MAKE_PARTITIONS == 1 ]]; then
@@ -17,16 +20,16 @@ if [[ $MAKE_PARTITIONS == 1 ]]; then
   parted $DISK_DEVICE mkpart root ext4 1024MiB 82944MiB
   parted $DISK_DEVICE mkpart home ext4 82944MiB 100%
 
-  mkfs.fvat -F 32 "${DISK_DEVICE}p1"
-  mkfs.ext4 "${DISK_DEVICE}p2"
-  mkfs.ext4 "${DISK_DEVICE}p3"
+  mkfs.vfat -F 32 $BOOT_PARTITION
+  mkfs.ext4 $ROOT_PARTITION
+  mkfs.ext4 $HOME_PARTITION
 fi
 
 echo "*** Mounting disks ***"
-mount "${DISK_DEVICE}p2" /mnt
+mount $ROOT_PARTITION /mnt
 mkdir -p /mnt/boot/efi /mnt/home
-mount "${DISK_DEVICE}p1" /mnt/boot/efi
-mount "${DISK_DEVICE}p3" /mnt/home
+mount $BOOT_PARTITION /mnt/boot/efi
+mount $HOME_PARTITION /mnt/home
 
 echo "*** Creating and mounting swapfile ***"
 mkdir $SWAP_PATH
@@ -52,6 +55,17 @@ unset $UCODE_TYPE
 echo "*** Generating fstabs ***"
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# Copy config file to new system bin
+cp ./base-configs.sh /mnt/usr/bin/
+
+# Execute with chroot
 echo "*** CHROOT ***"
-arch-chroot /mnt ./base-config.sh
+arch-chroot /mnt base-configs.sh
+
+# Remove config script
+rm /mnt/usr/bin/base-configs.sh
+
+# Cleaning
+swapoff $SWAP_PATH/swapfile
+umount -R /mnt
 

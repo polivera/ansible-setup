@@ -36,11 +36,11 @@ mkinitcpio -P
 
 # user config
 echo "*** Setting root Password ***"
-echo 'Test' | passwd --stdin
+echo 'Test.123' | passwd --stdin
 
 echo "*** Setting ${USER_NAME} Password ***"
 useradd -m $USER_NAME -G wheel
-echo 'Test' | passwd $USER_NAME --stdin
+echo 'Test.123' | passwd $USER_NAME --stdin
 
 # Change home owner
 chown $USER_NAME:$USER_NAME /home/$USER_NAME -R
