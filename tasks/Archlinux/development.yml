@@ -13,6 +13,8 @@
       - composer
       - nodejs
       - npm
+      - podman
+      - podman-compose
     state: present
     extra_args: --needed
 

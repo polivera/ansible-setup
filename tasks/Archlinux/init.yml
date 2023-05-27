@@ -19,10 +19,14 @@
     - name: Install terminal stuff
       ansible.builtin.import_tasks: ./terminal.yml
 
-    # Install terminal stuff
+    # Install development stuff
     - name: Install development stuff
       ansible.builtin.import_tasks: ./development.yml
 
-    # Install terminal stuff
+    # Install destop stuff (gnome)
     - name: Install desktop environment stuff
       ansible.builtin.import_tasks: ./gnome.yml
+
+    # Install gaming stuff (just steam for now)
+    - name: Install gaming stuff
+      ansible.builtin.import_tasks: ./gaming.yml
