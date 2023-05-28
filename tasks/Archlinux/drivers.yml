@@ -32,3 +32,8 @@
   tags:
     - drivers
 
+- name: Start pcsc service
+  become: true
+  shell: systemctl enable --now pcsc.service
+  tags:
+    - drivers
