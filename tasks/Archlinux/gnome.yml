@@ -3,7 +3,6 @@
   community.general.pacman:
     name:
       - gnome
-      - gnome-extra
       - gnome-themes-extra
       - gnome-tweaks
       - pipewire-jack
@@ -21,6 +20,17 @@
       - kvantum-qt5
       - libreoffice-fresh
       - fragments
+      - d-spy
+      - dconf-editor
+      - file-roller
+      - gnome-boxes
+      - gnome-builder
+      - gnome-connections
+      - gnome-multi-writter
+      - gnome-sound-recorder
+      - seahorse
+      - simple-scan
+      - sysprof
     state: present
   tags:
     - gnome
