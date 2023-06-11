@@ -19,6 +19,7 @@
       - ntfs-3g
       - zip
       - unzip
+      - exfat-utils
     state: present
   tags:
     - basics

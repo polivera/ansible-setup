@@ -11,16 +11,22 @@
     state: latest
   tags:
     - development
-  when: ansible_distribution == "Fedora"
 
 # Install Go
-- name: Install GoLang
+- name: Install Programming Languages
   become: true
   dnf:
     name:
       - golang
+      - delve
+      - php
+      - composer
+      - nodejs
+      - npm
     state: latest
   tags:
     - development
-  when: ansible_distribution == "Fedora"
+
+- name: Installing global tools
+  ansible.builtin.import_tasks: ../Global/development.yml
 

@@ -1,4 +1,5 @@
-- name: Gnome Fedora
-  debug: msg=gnome
+# Include gnome global configuration
+- name: Include global Gnome config
+  ansible.builtin.import_tasks: ../Global/gnome.yml
   tags:
     - gnome

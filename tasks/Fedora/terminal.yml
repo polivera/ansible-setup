@@ -1,7 +1,7 @@
 # Install base console commands
 - name: Install zsh and dependencies
   become: true
-  community.general.pacman:
+  ansible.builtin.dnf:
     name:
       - zsh
       - bat
@@ -17,10 +17,10 @@
       - xclip
       - curl
       - wget
+      - zip
     state: present
   tags:
     - terminal
 
-
-
-
+- name: Importing global terminal task
+  ansible.builtin.import_tasks: ../Global/terminal.yml
