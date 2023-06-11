@@ -38,6 +38,16 @@
     - ssh
     - dotfiles
 
+# Adding GPG Keys
+- name: Add server SSH Public key
+  copy:
+    src: "{{ src_gpg_key }}"
+    dest: "{{ dst_gpg_key }}"
+    mode: 0600
+  tags:
+    - ssh
+    - dotfiles
+
 # Adding public key as authorized_key
 - name: Set authorized key took from file
   authorized_key:
@@ -49,7 +59,7 @@
     - dotfiles
 
 - name: Import gpg key
-  ansible.builtin.shell: "gpg --import {{ gpg_key }}"
+  ansible.builtin.shell: "gpg --import {{ dst_gpg_key }}"
   tags:
     - ssh
     - dotfiles

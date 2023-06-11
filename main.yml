@@ -6,10 +6,11 @@
     src_git_key: "./tasks/Global/keys/id_rsa"
     src_server_key: "./tasks/Global/keys/id_rsa_servers"
     src_server_pub: "./tasks/Global/keys/id_rsa_servers.pub"
-    gpg_key: "./tasks/Global/keys/polivera-private.key"
+    src_gpg_key: "./tasks/Global/keys/polivera-private.key"
     dst_git_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
     dst_server_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers"
     dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers.pub"
+    dst_gpg_key: "{{ home_folder }}/.ssh/polivera-private"
     personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
   tasks:
     # Archlinux
