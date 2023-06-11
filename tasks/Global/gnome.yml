@@ -1,6 +1,7 @@
 - name: Gnome global configuration
   ansible.builtin.shell: |
-    gsettings set org.gnome.desktop.wm.preferences num-workspaces "10"
+    gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
+    gsettings set org.gnome.mutter dynamic-workspaces false
 
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "[\"<Alt>1\"]"
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "[\"<Alt>2\"]"
@@ -27,5 +28,6 @@
     gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 
     gsettings set org.gnome.desktop.interface enable-animations false
+    gsettings set org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']
   tags:
     - gnome

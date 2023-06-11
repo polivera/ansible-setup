@@ -1,3 +1,9 @@
+- name: Install desktop apps
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - kitty
+
 # Include gnome global configuration
 - name: Include global Gnome config
   ansible.builtin.import_tasks: ../Global/gnome.yml
