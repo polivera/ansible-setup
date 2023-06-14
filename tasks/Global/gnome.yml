@@ -28,6 +28,6 @@
     gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 
     gsettings set org.gnome.desktop.interface enable-animations false
-    gsettings set org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']
+    gsettings set org.gnome.desktop.input-sources xkb-options "[\"caps:ctrl_modifier\"]"
   tags:
     - gnome
