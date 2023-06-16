@@ -3,14 +3,14 @@
   gather_facts: true
   vars:
     home_folder: "{{ lookup('env', 'HOME') }}"
-    src_git_key: "./tasks/Global/keys/id_rsa"
-    src_server_key: "./tasks/Global/keys/id_rsa_servers"
-    src_server_pub: "./tasks/Global/keys/id_rsa_servers.pub"
-    src_gpg_key: "./tasks/Global/keys/polivera-private.key"
-    dst_git_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-    dst_server_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers"
-    dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_servers.pub"
-    dst_gpg_key: "{{ home_folder }}/.ssh/polivera-private"
+    src_git_key: "./tasks/Global/keys/id_ed_personal"
+    src_server_key: "./tasks/Global/keys/id_ed_servers"
+    src_server_pub: "./tasks/Global/keys/id_ed_servers.pub"
+    src_gpg_key: "./tasks/Global/keys/private-gpg-key.asc"
+    dst_git_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed_personal"
+    dst_server_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed_servers"
+    dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_ed_servers.pub"
+    dst_gpg_key: "{{ home_folder }}/.ssh/private-gpg-key.asc"
     personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
   tasks:
     # Archlinux
