@@ -1,3 +1,5 @@
-- name: Placeholder
-  debug: msg="WHAAAA"
-    
+- name: Running MacOSX installation script
+  block:
+    # Import ssh keys
+    - name: Running ssh tasks
+      ansible.builtin.import_tasks: ../Global/ssh.yml
