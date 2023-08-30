@@ -26,11 +26,12 @@
       - gnome-boxes
       - gnome-builder
       - gnome-connections
-      - gnome-multi-writter
+      - gnome-multi-writer
       - gnome-sound-recorder
       - seahorse
       - simple-scan
       - sysprof
+      - gnome-shell-extension-appindicator
     state: present
   tags:
     - gnome
@@ -41,7 +42,19 @@
   become: false
   ansible.builtin.shell: |
     yay -S \
-    1password spotify google-chrome gnome-browser-connector \
+    1password spotify google-chrome gnome-browser-connector logseq-desktop-bin \
+    --needed --noconfirm
+  tags:
+    - gnome
+
+# Install software from aur
+- name: Install extensions from aur
+  become: false
+  ansible.builtin.shell: |
+    yay -S \
+    gnome-shell-extension-blur-my-shell-git \
+    gnome-shell-extension-nightthemeswitcher \
+    gnome-shell-extension-arch-update \
     --needed --noconfirm
   tags:
     - gnome

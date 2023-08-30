@@ -59,7 +59,7 @@
     - dotfiles
 
 - name: Import gpg key
-  ansible.builtin.shell: "gpg --import {{ dst_gpg_key }}"
+  ansible.builtin.shell: "GPG_TTY=$(tty) gpg --import {{ dst_gpg_key }}"
   tags:
     - ssh
     - dotfiles

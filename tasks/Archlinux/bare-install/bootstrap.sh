@@ -44,6 +44,7 @@ echo "*** Setting time ***"
 timedatectl set-ntp true
 
 echo "*** Installing base system ***"
+pacman -S archlinux-keyring --noconfirm
 pacstrap /mnt \
     base \
     linux-zen linux-firmware linux-headers dkms $UCODE_TYPE \

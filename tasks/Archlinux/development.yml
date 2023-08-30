@@ -13,8 +13,9 @@
       - composer
       - nodejs
       - npm
-      - podman
-      - podman-compose
+      - docker
+      - docker-compose
+      - aws-cli-v2
     state: present
     extra_args: --needed
 
