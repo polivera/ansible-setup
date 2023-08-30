@@ -1,0 +1,13 @@
+- name: Running Ubuntu installation script
+  block:
+    # Import ssh keys
+    - name: Running ssh tasks
+      ansible.builtin.import_tasks: ../Global/ssh.yml
+
+    # # Install basics
+    # - name: Install basics
+    #   ansible.builtin.import_tasks: ./basics.yml
+
+    # Dotfiles
+    - name: Installing dotfiles
+      ansible.builtin.import_tasks: ../Global/dotfiles.yml

@@ -1,0 +1,9 @@
+- name: Install basics
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - build-essential
+      - zsh
+      - bat
+      - exa
+    state: present

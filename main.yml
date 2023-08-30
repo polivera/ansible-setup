@@ -13,6 +13,11 @@
     dst_gpg_key: "{{ home_folder }}/.ssh/private-gpg-key.asc"
     personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
   tasks:
+    - name: Debug ansible distribution
+      ansible.builtin.debug:
+        var: ansible_distribution
+      tags:
+        - debug
     # Archlinux
     - name: Starting Archlinux installer
       ansible.builtin.import_tasks: "./tasks/Archlinux/init.yml"
@@ -21,10 +26,14 @@
     - name: Starting Fedora installer
       ansible.builtin.import_tasks: "./tasks/Fedora/init.yml"
       when: ansible_distribution == "Fedora"
+    # Ubuntu
+    - name: Starting Ubuntu installer
+      ansible.builtin.import_tasks: "./tasks/Ubuntu/init.yml"
     # MacOSX
     - name: Starting MacOSX installer
       ansible.builtin.import_tasks: "./tasks/MacOSX/init.yml"
       when: ansible_distribution == "MacOSX"
+      
 # --------------------------------------------------------------------------
 # ansible_distribution
 #  - Archlinux
