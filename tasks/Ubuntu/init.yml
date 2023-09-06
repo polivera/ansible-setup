@@ -10,4 +10,10 @@
 
     # Dotfiles
     - name: Installing dotfiles
-      ansible.builtin.import_tasks: ../Global/dotfiles.yml
+      ansible.builtin.import_tasks: ../Global/dotfiles.yml    
+      
+    - name: Install Terminal
+      ansible.builtin.import_tasks: ./terminal.yml
+
+    - name: Install DevTools
+      ansible.builtin.import_tasks: ./development.yml

@@ -1,0 +1,12 @@
+- name: Install dependencies
+  become: true
+  ansible.builtin.apt:   
+    pkg:
+      - build-essential
+    state: present
+  tags:
+    - development
+
+- name: Installing global tools
+  ansible.builtin.import_tasks: ../Global/development.yml
+ 

@@ -1,0 +1,13 @@
+- name: Install terminal stuff
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - zsh
+      - bat
+      - exa
+    state: present
+  tags:
+    - terminal
+
+- name: Importing global terminal task
+  ansible.builtin.import_tasks: ../Global/terminal.yml

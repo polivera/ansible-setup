@@ -12,6 +12,8 @@
       - pacman-contrib
       - pipewire
       - pipewire-pulse
+      - libpipewire
+      - lib32-libpipewire
       - bluez
       - bluez-utils
       - openssh

@@ -2,8 +2,5 @@
   become: true
   ansible.builtin.apt:
     pkg:
-      - build-essential
-      - zsh
-      - bat
-      - exa
+      - some-package
     state: present
