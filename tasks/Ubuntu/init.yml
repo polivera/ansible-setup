@@ -1,19 +1,25 @@
 - name: Running Ubuntu installation script
   block:
+    # Install basics
+    - name: Install basics
+      ansible.builtin.import_tasks: ./basics.yml
+
     # Import ssh keys
     - name: Running ssh tasks
-      ansible.builtin.import_tasks: ../Global/ssh.yml
-
-    # # Install basics
-    # - name: Install basics
-    #   ansible.builtin.import_tasks: ./basics.yml
+      ansible.builtin.import_tasks: ./ssh.yml
 
     # Dotfiles
     - name: Installing dotfiles
-      ansible.builtin.import_tasks: ../Global/dotfiles.yml    
-      
+      ansible.builtin.import_tasks: ../Global/dotfiles.yml
+
+    # Terminal
     - name: Install Terminal
       ansible.builtin.import_tasks: ./terminal.yml
 
+    # Development Tools
     - name: Install DevTools
       ansible.builtin.import_tasks: ./development.yml
+
+    # Terminal
+    - name: Install Neovim
+      ansible.builtin.import_tasks: ./neovim.yml

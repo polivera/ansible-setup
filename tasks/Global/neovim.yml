@@ -1,0 +1,18 @@
+# Checkout Neovim Configuration
+- name: Checkout neovim config
+  git:
+    repo: "git@github.com:polivera/nvim.git"
+    dest: "{{ personal_project_folder }}/neovim"
+    accept_hostkey: yes
+    version: main
+  tags:
+    - neovim
+
+# Link to config
+- name: Link neovim config
+  file:
+    src: "{{ personal_project_folder }}/neovim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link
+  tags:
+    - neovim

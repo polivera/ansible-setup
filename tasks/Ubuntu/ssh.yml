@@ -1,0 +1,2 @@
+- name: Installing global tools
+  ansible.builtin.import_tasks: ../Global/ssh.yml

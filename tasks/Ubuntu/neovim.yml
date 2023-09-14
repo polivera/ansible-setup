@@ -1,0 +1,36 @@
+- name: Create Downloads directory
+  ansible.builtin.file:
+    dest: "{{ lookup('env', 'HOME') }}/Downloads"
+    state: directory
+  tags:
+    - neovim
+
+- name: Download Neovim
+  become: true
+  ansible.builtin.unarchive:
+    src: https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz 
+    dest: "{{ lookup('env', 'HOME') }}/Downloads/"
+    remote_src: yes
+  tags:
+    - neovim
+
+- name: Move Neovim folder to /opt
+  become: true
+  ansible.posix.synchronize:
+    src: "{{ lookup('env', 'HOME') }}/Downloads/nvim-linux64/"
+    dest: "/opt/neovim/"
+    recursive: true
+  tags:
+    - neovim
+
+- name: Link Neovim to /usr/bin
+  become: true
+  ansible.builtin.file:
+    src: /opt/neovim/bin/nvim
+    dest: /usr/bin/nvim
+    state: link
+  tags:
+    - neovim
+
+- name: Importing global terminal task
+  ansible.builtin.import_tasks: ../Global/neovim.yml

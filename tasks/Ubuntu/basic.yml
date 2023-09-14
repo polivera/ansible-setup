@@ -1,6 +1,0 @@
-- name: Install basics
-  become: true
-  ansible.builtin.apt:
-    pkg:
-      - some-package
-    state: present

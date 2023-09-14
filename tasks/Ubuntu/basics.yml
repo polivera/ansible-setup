@@ -1,0 +1,16 @@
+- name: Update mirror cache and update the OS
+  become: true
+  ansible.builtin.apt:
+    upgrade: yes
+    update_cache: yes
+  tags:
+    - basics
+
+- name: Install Basics
+  ansible.builtin.apt:
+    name:
+      - git
+      - fzf
+    state: present
+    tags:
+      - basics

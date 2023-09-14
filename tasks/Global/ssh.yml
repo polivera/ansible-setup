@@ -6,7 +6,6 @@
     state: directory
   tags:
     - ssh
-    - dotfiles
 
 # Adding git keys
 - name: Add git SSH key
@@ -16,7 +15,6 @@
     mode: 0600
   tags:
     - ssh
-    - dotfiles
 
 # Adding server keys
 - name: Add server SSH key
@@ -26,7 +24,6 @@
     mode: 0600
   tags:
     - ssh
-    - dotfiles
 
 # Adding server keys
 - name: Add server SSH Public key
@@ -36,7 +33,6 @@
     mode: 0600
   tags:
     - ssh
-    - dotfiles
 
 # Adding GPG Keys
 - name: Add server SSH Public key
@@ -46,7 +42,6 @@
     mode: 0600
   tags:
     - ssh
-    - dotfiles
 
 # Adding public key as authorized_key
 - name: Set authorized key took from file
@@ -56,11 +51,8 @@
     key: "{{ lookup('file', dst_server_pub) }}"
   tags:
     - ssh
-    - dotfiles
 
 - name: Import gpg key
-  ansible.builtin.shell: "GPG_TTY=$(tty) gpg --import {{ dst_gpg_key }}"
+  ansible.builtin.shell: "gpg --batch --passphrase {{ gpg_pass }} --import {{ dst_gpg_key }}"
   tags:
     - ssh
-    - dotfiles
-

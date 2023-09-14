@@ -9,7 +9,7 @@
 
 # Install starship
 - name: Install starship shell
-  ansible.builtin.shell: set -o pipefail && curl -sS https://starship.rs/install.sh | sh -s -- -y
+  ansible.builtin.shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
   tags:
     - terminal
 
@@ -19,24 +19,5 @@
     repo: https://github.com/tmux-plugins/tpm
     dest: "{{ lookup('env', 'HOME') }}/.config/tmux/plugins/tpm"
     version: master
-  tags:
-    - terminal
-
-# Install Neovim
-- name: Checkout neovim config
-  git:
-    repo: "git@github.com:polivera/nvim.git"
-    dest: "{{ personal_project_folder }}/neovim"
-    accept_hostkey: yes
-    version: main
-  tags:
-    - terminal
-
-# Link to config
-- name: Link neovim config
-  file:
-    src: "{{ personal_project_folder }}/neovim"
-    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
-    state: link
   tags:
     - terminal

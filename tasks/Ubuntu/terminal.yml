@@ -5,6 +5,7 @@
       - zsh
       - bat
       - exa
+      - tmux
     state: present
   tags:
     - terminal
