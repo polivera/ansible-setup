@@ -25,7 +25,7 @@ echo 'LANG=en_US.UTF-8' >/etc/locale.conf
 echo "*** Setting computer name to ${MACHINE_NAME} ***"
 echo "${MACHINE_NAME}" >/etc/hostname
 
-echo "*** Configure hostfile ***"
+echo "*** Configure host file ***"
 # shellcheck disable=SC2129
 echo '127.0.0.1    localhost' >>/etc/hosts
 echo '::1          localhost' >>/etc/hosts

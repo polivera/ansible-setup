@@ -25,7 +25,7 @@
 
     # Install destop stuff (gnome)
     - name: Install desktop environment stuff
-      ansible.builtin.import_tasks: ./gnome.yml
+      ansible.builtin.import_tasks: ./plasma.yml
 
     # Install gaming stuff (just steam for now)
     - name: Install gaming stuff

@@ -1,0 +1,86 @@
+- name: Plasma Archlinux (btw)
+  become: true
+  community.general.pacman:
+    name:
+      - plasma
+      - kvantum-qt5
+      - kitty
+      - plasma-wayland-session
+      - ark
+      - audiotube
+      - cantor
+      - colord-kde
+      - dolphin
+      - dolphin-plugins
+      - ffmpegthumbs
+      - filelight
+      - gwenview
+      - kalarm
+      - kalgebra
+      - kamera
+      - kamoso
+      - kate
+      - kcalc
+      - kcharselect
+      - kclock
+      - kcolorchooser
+      - kcron
+      - kde-dev-script
+      - kde-dev-utils
+      - kde-inotify-survey
+      - kdebugsettings
+      - kdeconnect
+      - kdegraphics-thumbnailers
+      - kdenetwork-filesharing
+      - kdepim-addons
+      - kdf
+      - kdialog
+      - kio-admin
+      - kio-extras
+      - kio-gdrive
+      - kio-zeroconf
+      - kget
+      - kgpg
+      - khelpcenter
+      - kig
+      - kleopatra
+      - ktorrent
+      - kwalletmanager
+      - okular
+      - partitionmanager
+      - libappindicator-gtk3
+      - lib32-libappindicator-gtk3
+      - phonon-qt5
+      - phonon-qt5-gstreamer
+      - phonon-qt5-vlc
+      - print-manager
+      - noto-fonts
+      - noto-fonts-emoji
+      - power-profiles-daemon
+      - xdg-desktop-portal-gtk
+      - xsettingsd
+      - sddm
+    state: present
+    extra_args: --needed
+    tags:
+      - plasma
+
+
+    # Install software from aur
+- name: Install desktop apps from aur
+  become: false
+  ansible.builtin.shell: |
+    yay -S \
+    1password spotify google-chrome \
+    --needed --noconfirm
+  tags:
+    - gnome
+
+- name: Enable sddm
+  become: true
+  ansible.builtin.systemd:
+    name: sddm
+    enable: true
+  tags:
+    - plasma
+
