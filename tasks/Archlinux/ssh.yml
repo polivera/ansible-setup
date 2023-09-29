@@ -1,0 +1,3 @@
+# Import ssh keys
+- name: Running ssh tasks
+  ansible.builtin.import_tasks: ../Global/ssh.yml

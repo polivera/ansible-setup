@@ -2,7 +2,7 @@
   block:
     # Import ssh keys
     - name: Running ssh tasks
-      ansible.builtin.import_tasks: ../Global/ssh.yml
+      ansible.builtin.import_tasks: ./ssh.yml
 
     # Install basics
     - name: Install basics

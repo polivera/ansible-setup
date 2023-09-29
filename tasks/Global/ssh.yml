@@ -16,24 +16,6 @@
   tags:
     - ssh
 
-# Adding server keys
-- name: Add server SSH key
-  copy:
-    src: "{{ src_server_key }}"
-    dest: "{{ dst_server_key }}"
-    mode: 0600
-  tags:
-    - ssh
-
-# Adding server keys
-- name: Add server SSH Public key
-  copy:
-    src: "{{ src_server_pub }}"
-    dest: "{{ dst_server_pub }}"
-    mode: 0600
-  tags:
-    - ssh
-
 # Adding GPG Keys
 - name: Add server SSH Public key
   copy:
@@ -43,16 +25,7 @@
   tags:
     - ssh
 
-# Adding public key as authorized_key
-- name: Set authorized key took from file
-  authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
-    state: present
-    key: "{{ lookup('file', dst_server_pub) }}"
-  tags:
-    - ssh
-
 - name: Import gpg key
-  ansible.builtin.shell: "gpg --batch --passphrase {{ gpg_pass }} --import {{ dst_gpg_key }}"
+  ansible.builtin.shell: "gpg --import {{ dst_gpg_key }}"
   tags:
     - ssh

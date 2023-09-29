@@ -3,22 +3,12 @@
   gather_facts: true
   vars:
     home_folder: "{{ lookup('env', 'HOME') }}"
-    src_git_key: "./tasks/Global/keys/id_ed_personal"
-    src_server_key: "./tasks/Global/keys/id_ed_servers"
-    src_server_pub: "./tasks/Global/keys/id_ed_servers.pub"
-    src_gpg_key: "./tasks/Global/keys/private-gpg-key.asc"
-    dst_git_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed_personal"
-    dst_server_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed_servers"
-    dst_server_pub: "{{ lookup('env', 'HOME') }}/.ssh/id_ed_servers.pub"
-    dst_gpg_key: "{{ home_folder }}/.ssh/private-gpg-key.asc"
-    personal_project_folder: "{{ lookup('env', 'HOME') }}/Projects/Personal"
-    gpg_pass: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          34363866323933653338303934363236373236393966623030303461383666323436666539653865
-          6637346462363732363634303461303132336232383134610a636264376132336566323033393539
-          32353835623864346462626431663439666461323065643833396461343763363464353361666562
-          3265616538363833370a363364366561356430653433386366356433383564356366303931313530
-          3366
+    vault_keys_folder: "./tasks/Global/keys"
+    src_git_key: "{{ vault_keys_folder }}/id-ed-personal"
+    src_gpg_key: "{{ vault_keys_folder }}/personal-gpg-private.asc"
+    dst_git_key: "{{ home_folder }}/.ssh/id-ed-personal"
+    dst_gpg_key: "{{ home_folder }}/.ssh/personal-gpg-private.asc"
+    personal_project_folder: "{{ home_folder }}/Projects/Personal"
   tasks:
     - name: Debug ansible distribution
       ansible.builtin.debug:
