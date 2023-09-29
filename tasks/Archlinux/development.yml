@@ -3,8 +3,6 @@
   community.general.pacman:
     name:
       - base-devel
-      - fzf
-      - ripgrep
       - hunspell    # Gospel dependency
       - github-cli  # For neovim octo plugin
       - go

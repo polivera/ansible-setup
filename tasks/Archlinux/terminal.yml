@@ -5,7 +5,7 @@
     name:
       - zsh
       - bat
-      - exa
+      - eza
       - tree
       - tmux
       - neovim
@@ -13,10 +13,8 @@
       - curl
       - wget
       - fzf
+      - fd
       - ripgrep
-      - xclip
-      - curl
-      - wget
       - zip
     state: present
   tags:

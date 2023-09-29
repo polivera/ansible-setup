@@ -3,62 +3,9 @@
   community.general.pacman:
     name:
       - plasma
-      - kvantum-qt5
-      - kitty
       - plasma-wayland-session
-      - ark
-      - audiotube
-      - cantor
-      - colord-kde
-      - dolphin
-      - dolphin-plugins
-      - ffmpegthumbs
-      - filelight
-      - gwenview
+      - kde-applications
       - kalarm
-      - kalgebra
-      - kamera
-      - kamoso
-      - kate
-      - kcalc
-      - kcharselect
-      - kclock
-      - kcolorchooser
-      - kcron
-      - kde-dev-script
-      - kde-dev-utils
-      - kde-inotify-survey
-      - kdebugsettings
-      - kdeconnect
-      - kdegraphics-thumbnailers
-      - kdenetwork-filesharing
-      - kdepim-addons
-      - kdf
-      - kdialog
-      - kio-admin
-      - kio-extras
-      - kio-gdrive
-      - kio-zeroconf
-      - kget
-      - kgpg
-      - khelpcenter
-      - kig
-      - kleopatra
-      - ktorrent
-      - kwalletmanager
-      - okular
-      - partitionmanager
-      - libappindicator-gtk3
-      - lib32-libappindicator-gtk3
-      - phonon-qt5
-      - phonon-qt5-gstreamer
-      - phonon-qt5-vlc
-      - print-manager
-      - noto-fonts
-      - noto-fonts-emoji
-      - power-profiles-daemon
-      - xdg-desktop-portal-gtk
-      - xsettingsd
       - sddm
     state: present
     extra_args: --needed
@@ -74,7 +21,7 @@
     1password spotify google-chrome \
     --needed --noconfirm
   tags:
-    - gnome
+    - plasma
 
 - name: Enable sddm
   become: true
