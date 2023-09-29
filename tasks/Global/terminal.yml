@@ -15,7 +15,7 @@
 
 # Installing tmux tpm
 - name: Installing tmux tpm
-  git:
+  ansible.builtin.git:
     repo: https://github.com/tmux-plugins/tpm
     dest: "{{ lookup('env', 'HOME') }}/.config/tmux/plugins/tpm"
     version: master

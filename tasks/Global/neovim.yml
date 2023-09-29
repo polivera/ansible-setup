@@ -1,6 +1,6 @@
 # Checkout Neovim Configuration
 - name: Checkout neovim config
-  git:
+  ansible.builtin.git:
     repo: "git@github.com:polivera/nvim.git"
     dest: "{{ personal_project_folder }}/neovim"
     accept_hostkey: yes

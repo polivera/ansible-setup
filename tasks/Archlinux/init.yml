@@ -13,7 +13,7 @@
 
     # Install dotfiles
     - name: Installing dotfiles
-      ansible.builtin.import_tasks: ../Global/dotfiles.yml
+      ansible.builtin.import_tasks: ./dotfiles.yml
 
     # Install terminal stuff
     - name: Install terminal stuff

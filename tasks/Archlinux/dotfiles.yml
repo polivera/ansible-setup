@@ -1,0 +1,3 @@
+# Install dotfiles
+- name: Installing dotfiles
+  ansible.builtin.import_tasks: ../Global/dotfiles.yml

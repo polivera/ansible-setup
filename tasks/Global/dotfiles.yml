@@ -6,15 +6,9 @@
   tags:
     - dotfiles
 
-- name: Debug ansible distribution
-  ansible.builtin.debug:
-    var: dst_git_key
-  tags:
-    - dotfiles
-
 # Checkout dotfiles
 - name: Checking out dotfiles
-  git:
+  ansible.builtin.git:
     repo: "https://github.com/polivera/dotfiles"
     dest: "{{ personal_project_folder }}/dotfiles"
   tags:
@@ -25,4 +19,3 @@
   register: foobar
   tags:
     - dotfiles
-  

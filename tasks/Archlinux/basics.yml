@@ -30,6 +30,7 @@
   ansible.builtin.git:
     repo: "https://aur.archlinux.org/yay.git"
     dest: "{{ home_folder }}/yay"
+    accept_hostkey: yes
   tags:
     - basics
 
