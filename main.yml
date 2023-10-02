@@ -6,8 +6,10 @@
     vault_keys_folder: "./tasks/Global/keys"
     src_git_key: "{{ vault_keys_folder }}/id-ed-personal"
     src_gpg_key: "{{ vault_keys_folder }}/personal-gpg-private.asc"
+    src_ssh_config: "./tasks/Global/configs/ssh-config"
     dst_git_key: "{{ home_folder }}/.ssh/id-ed-personal"
     dst_gpg_key: "{{ home_folder }}/.ssh/personal-gpg-private.asc"
+    dst_ssh_config: "{{ home_folder }}/.ssh/config"
     personal_project_folder: "{{ home_folder }}/Projects/Personal"
   tasks:
     - name: Debug ansible distribution
@@ -19,14 +21,14 @@
     - name: Starting Archlinux installer
       ansible.builtin.import_tasks: "./tasks/Archlinux/init.yml"
       when: ansible_distribution == "Archlinux"
-    # Fedora
-    - name: Starting Fedora installer
-      ansible.builtin.import_tasks: "./tasks/Fedora/init.yml"
-      when: ansible_distribution == "Fedora"
     # Ubuntu
     - name: Starting Ubuntu installer
       ansible.builtin.import_tasks: "./tasks/Ubuntu/init.yml"
       when: ansible_distribution == "Ubuntu"
+    # Fedora
+    - name: Starting Fedora installer
+      ansible.builtin.import_tasks: "./tasks/Fedora/init.yml"
+      when: ansible_distribution == "Fedora"
     # MacOSX
     - name: Starting MacOSX installer
       ansible.builtin.import_tasks: "./tasks/MacOSX/init.yml"
@@ -35,5 +37,6 @@
 # --------------------------------------------------------------------------
 # ansible_distribution
 #  - Archlinux
+#  - Ubuntu
 #  - Fedora
 #  - MacOSX

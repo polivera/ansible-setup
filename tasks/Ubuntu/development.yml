@@ -8,33 +8,6 @@
   tags:
     - development
 
-- name: Create lua lsp folder on /opt
-  become: true
-  ansible.builtin.file:
-    dest: "/opt/lua-lsp"
-    state: directory
-  tags:
-    - development
-
-- name: Install lua language server
-  become: true
-  ansible.builtin.unarchive:
-    src: https://github.com/LuaLS/lua-language-server/releases/download/3.7.0/lua-language-server-3.7.0-linux-x64.tar.gz
-    dest: "/opt/lua-lsp"
-    remote_src: yes
-  tags:
-    - development
-
-- name: Add it to /usr/bin
-  become: true
-  ansible.builtin.file:
-    src: /opt/lua-lsp/bin/lua-language-server
-    dest: /usr/bin/lua-language-server
-    state: link
-  tags:
-    - development
-    - pp
-
 - name: Installing global tools
   ansible.builtin.import_tasks: ../Global/development.yml
  

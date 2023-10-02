@@ -25,6 +25,15 @@
   tags:
     - ssh
 
+# Adding GPG Keys
+- name: Add server SSH Public key
+  copy:
+    src: "{{ src_ssh_config }}"
+    dest: "{{ dst_ssh_config }}"
+    mode: 0600
+  tags:
+    - ssh
+
 - name: Import gpg key
   ansible.builtin.shell: "gpg --import {{ dst_gpg_key }}"
   tags:

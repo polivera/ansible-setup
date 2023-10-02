@@ -11,10 +11,10 @@
   tags:
     - development
 
-- name: Install Node
-  ansible.builtin.shell: "source {{ home_folder }}/.config/nvm/nvm.sh && nvm install node"
-  tags:
-    - development
+# - name: Install Node
+#   ansible.builtin.shell: "source {{ home_folder }}/.config/nvm/nvm.sh && nvm install node"
+#   tags:
+#     - development
 
 # Install Rust
 - name: Install Rust programming language

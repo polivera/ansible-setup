@@ -9,7 +9,7 @@
 # Checkout dotfiles
 - name: Checking out dotfiles
   ansible.builtin.git:
-    repo: "https://github.com/polivera/dotfiles"
+    repo: "git@gh.personal:polivera/dotfiles"
     dest: "{{ personal_project_folder }}/dotfiles"
   tags:
     - dotfiles

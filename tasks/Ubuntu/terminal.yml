@@ -6,6 +6,7 @@
       - bat
       - exa
       - tmux
+      - fd-find
     state: present
   tags:
     - terminal
