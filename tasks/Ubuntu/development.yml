@@ -4,6 +4,8 @@
     pkg:
       - build-essential
       - cmake
+      - zip
+      - unzip
     state: present
   tags:
     - development

@@ -8,6 +8,8 @@
       - kalarm
       - libreoffice-fresh
       - sddm
+      - plasma-workspace
+      - wl-clipboard
     state: present
     extra_args: --needed
   tags:
