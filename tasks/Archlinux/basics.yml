@@ -17,7 +17,6 @@
       - bluez
       - bluez-utils
       - openssh
-      - stow
       - ntfs-3g
       - zip
       - unzip

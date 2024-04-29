@@ -50,7 +50,7 @@ pacstrap /mnt \
     linux-zen linux-firmware linux-headers dkms $UCODE_TYPE \
     grub efibootmgr \
     networkmanager bluez bluez-utils \
-    sudo git ansible neovim 
+    sudo git neovim 
 
 unset $UCODE_TYPE
 

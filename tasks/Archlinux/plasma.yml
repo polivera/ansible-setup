@@ -21,7 +21,7 @@
   become: false
   ansible.builtin.shell: |
     yay -S \
-    1password spotify google-chrome jetbrains-toolbox \
+    1password spotify google-chrome \
     --needed --noconfirm
   tags:
     - plasma
