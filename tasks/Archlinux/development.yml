@@ -4,7 +4,6 @@
     name:
       - base-devel
       - hunspell    # Gospel dependency
-      - github-cli  # For neovim octo plugin
       - go
       - delve       # Golang Debugger
       - php

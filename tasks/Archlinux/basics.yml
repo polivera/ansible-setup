@@ -48,7 +48,6 @@
     - basics
 
 - name: Install firmware drivers
-  ansible.builtin.shell: yay -S aic94xx-firmware wd719x-firmware --needed --noconfirm
+  ansible.builtin.shell: yay -S aic94xx-firmware wd719x-firmware mkinitcpio-firmware --needed --noconfirm
   tags:
     - basics
-

@@ -11,11 +11,6 @@
   tags:
     - development
 
-# - name: Install Node
-#   ansible.builtin.shell: "source {{ home_folder }}/.config/nvm/nvm.sh && nvm install node"
-#   tags:
-#     - development
-
 # Install Rust
 - name: Install Rust programming language
   ansible.builtin.shell: curl https://sh.rustup.rs -sSf | RUSTUP_HOME=$HOME/.config/rustup CARGO_HOME=$HOME/.config/cargo sh -s -- -y --no-modify-path
