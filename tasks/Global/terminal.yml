@@ -8,16 +8,16 @@
     - terminal
 
 # Install starship
-- name: Install starship shell
-  ansible.builtin.shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
-  tags:
-    - terminal
-
-# Installing tmux tpm
-- name: Installing tmux tpm
-  ansible.builtin.git:
-    repo: https://github.com/tmux-plugins/tpm
-    dest: "{{ home_folder }}/.config/tmux/plugins/tpm"
-    version: master
-  tags:
-    - terminal
+# - name: Install starship shell
+#   ansible.builtin.shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
+#   tags:
+#     - terminal
+# 
+# # Installing tmux tpm
+# - name: Installing tmux tpm
+#   ansible.builtin.git:
+#     repo: https://github.com/tmux-plugins/tpm
+#     dest: "{{ home_folder }}/.config/tmux/plugins/tpm"
+#     version: master
+#   tags:
+#     - terminal

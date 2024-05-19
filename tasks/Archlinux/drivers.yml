@@ -13,8 +13,12 @@
       - lib32-vulkan-icd-loader
       - mesa-vdpau
       - lib32-mesa-vdpau
+      - vulkan-mesa-layers
+      - lib32-vulkan-mesa-layers
       - mesa-demos
       - xorg-xdriinfo
+      - vulkan-radeon 
+      - lib32-vulkan-radeon 
     state: present
     extra_args: --needed
   tags:

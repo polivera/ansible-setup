@@ -11,13 +11,13 @@
     - name: Install drivers
       ansible.builtin.import_tasks: ./drivers.yml
 
-    # Install dotfiles
-    - name: Installing dotfiles
-      ansible.builtin.import_tasks: ./dotfiles.yml
-
     # Install terminal stuff
     - name: Install terminal stuff
       ansible.builtin.import_tasks: ./terminal.yml
+
+    # Install dotfiles
+    - name: Installing dotfiles
+      ansible.builtin.import_tasks: ./dotfiles.yml
 
     # Install development stuff
     - name: Install development stuff

@@ -1,24 +1,24 @@
 # Install NodeJS
-- name: Create nvm folder
-  ansible.builtin.file:
-    dest: "{{ home_folder }}/.config/nvm"
-    state: directory
-  tags:
-    - development
-
-- name: Install Node Version Manager
-  ansible.builtin.shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | NVM_DIR=$HOME/.config/nvm bash
-  tags:
-    - development
-
-# Install Rust
-- name: Install Rust programming language
-  ansible.builtin.shell: curl https://sh.rustup.rs -sSf | RUSTUP_HOME=$HOME/.config/rustup CARGO_HOME=$HOME/.config/cargo sh -s -- -y --no-modify-path
-  tags:
-    - development
-
-# Install JVM
-- name: Install SDK Man
-  ansible.builtin.shell: curl -s "https://get.sdkman.io" | SDKMAN_DIR=$HOME/.config/sdkman sh -s -- --help
-  tags:
-    - development
+# - name: Create nvm folder
+#   ansible.builtin.file:
+#     dest: "{{ home_folder }}/.config/nvm"
+#     state: directory
+#   tags:
+#     - development
+# 
+# - name: Install Node Version Manager
+#   ansible.builtin.shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | NVM_DIR=$HOME/.config/nvm bash
+#   tags:
+#     - development
+# 
+# # Install Rust
+# - name: Install Rust programming language
+#   ansible.builtin.shell: curl https://sh.rustup.rs -sSf | RUSTUP_HOME=$HOME/.config/rustup CARGO_HOME=$HOME/.config/cargo sh -s -- -y --no-modify-path
+#   tags:
+#     - development
+# 
+# # Install JVM
+# - name: Install SDK Man
+#   ansible.builtin.shell: curl -s "https://get.sdkman.io" | SDKMAN_DIR=$HOME/.config/sdkman sh -s -- --help
+#   tags:
+#     - development
