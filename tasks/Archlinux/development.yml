@@ -13,7 +13,6 @@
       - docker
       - docker-compose
       - mariadb-clients
-      - aws-cli-v2
     state: present
     extra_args: --needed
 

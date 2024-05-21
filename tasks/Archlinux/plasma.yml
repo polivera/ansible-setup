@@ -3,7 +3,6 @@
   community.general.pacman:
     name:
       - plasma
-      - plasma-wayland-session
       - kde-applications
       - kalarm
       - libreoffice-fresh
