@@ -9,6 +9,8 @@
       - sddm
       - plasma-workspace
       - wl-clipboard
+      - pacman-contrib
+      - pacutils
     state: present
     extra_args: --needed
   tags:
